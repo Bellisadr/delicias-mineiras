@@ -178,16 +178,19 @@
   }
 
   .info__empresa__container {
-    width: 98%;
+    width: 99%;
     margin-top: calc(-12vh); /* Flexible overlap */
+    gap: 1vh;
+    padding: 8% 0;
   }
 
   .info__empresa__texto h3 {
-    font-size: 1.1rem;
+    font-size: 0.8rem;
+
   }
 
   .info__empresa__texto p {
-    font-size: 0.9rem;
+    font-size: 0.6rem;
   }
 
   .produto__grid {
