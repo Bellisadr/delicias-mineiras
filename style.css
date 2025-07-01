@@ -1,0 +1,446 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Montserrat+Alternates:wght@400;600;700&display=swap");
+
+:root {
+  --primeira-fonte: "montserrat alternates", sans-serif;
+  --segunda-fonte: "lora", serif;
+  --cor-primaria: #4b0000;
+  --cor-secundaria: #d9d9d9;
+  --cor-terciaria: #592202;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden; /* Prevent horizontal white space */
+  margin: 0;
+}
+
+/* === 3. MENU E MENU RESPONSIVO === */
+
+/* Menu normal */
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  list-style: none;
+  font-family: var(--primeira-fonte);
+  font-weight: 600;
+  font-size: 1.5rem;
+  transition: all 0.4s ease-in-out;
+}
+
+.menu a {
+  text-decoration: none;
+  color: var(--cor-secundaria);
+}
+
+.menu .logo img {
+  height: 15vh;
+}
+
+/* Classe aplicada quando o menu é ativado no mobile */
+.menu.ativo {
+  display: flex;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+/* Ícone animado (3 barras) */
+.hamburger {
+  display: none;
+  width: 30px;
+  height: 24px;
+  position: absolute;
+  top: 20px;
+  right: 5%;
+  z-index: 20;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  height: 4px;
+  width: 100%;
+  margin: 5px auto;
+  background-color: var(--cor-secundaria);
+  transition: all 0.4s ease-in-out;
+}
+
+/* Animação para o ícone virar X */
+.hamburger.ativo span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.ativo span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.ativo span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* HOME */
+.background {
+  background: url("assets/home/background-home.png") no-repeat center center;
+  background-size: cover; /* Revert to cover for full coverage */
+  background-position: center 20%;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 50vh;
+}
+
+.header {
+  padding: 2% 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: row;
+  text-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* Ensure content is positioned correctly */
+  gap: 15vh;
+}
+
+.frase {
+  font-family: var(--primeira-fonte);
+  font-size: 3rem;
+  text-align: center;
+  text-shadow: rgb(77, 75, 75) 0 2px 2px;
+  line-height: 1.2;
+  color: var(--cor-secundaria);
+  font-weight: 600;
+  padding-bottom: 15vh;
+}
+
+.cards {
+  display: flex;
+  gap: 3%;
+  padding: 15% 3% 0 0;
+}
+
+.cards__produtos {
+  background: var(--cor-terciaria);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 35vh;
+}
+
+.card-link {
+  list-style: none;
+  text-decoration: none;
+}
+
+.cards__produtos:hover {
+  transform: translateY(-5%);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+  transition: all 0.5s ease-in-out;
+}
+
+.cards__produtos--doces {
+  background: var(--cor-primaria);
+}
+
+.cards__produtos img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cards span {
+  font-family: var(--segunda-fonte);
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--cor-secundaria);
+  padding: 3%;
+  padding-top: 4%;
+}
+
+/* Info Empresa */
+
+.info__empresa__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--cor-primaria);
+  width: 60%;
+  margin-top: calc(-20vh); /* Flexible overlap */
+  padding: 2%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+}
+
+.info__empresa__texto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  color: #f5f5f5;
+}
+
+.info__empresa__texto h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 0 0 10px 0;
+}
+
+.info__empresa__texto p {
+  font-size: 1.25rem;
+  font-weight: 400;
+  text-align: center;
+  padding: 20px 0 0 0;
+}
+
+/* Produtos */
+.produtos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10vh;
+  background-color: var(--cor-secundaria);
+}
+
+.produtos__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 2%;
+  flex-wrap: wrap;
+}
+
+.produtos__container:not(:last-child) {
+  border-bottom: 10px solid var(--cor-primaria);
+}
+
+.produtos__titulo {
+  font-family: var(--segunda-fonte);
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--cor-primaria);
+  text-align: center;
+  padding: 2%;
+}
+
+.produto__grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(140px, 1fr)) 50px;
+  gap: 15px;
+  align-items: center;
+  padding: 0 5%;
+}
+
+.produto__item {
+  text-align: center;
+  padding: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.produto__item img {
+  width: 100%;
+  height: 70%;
+  border-radius: 3px;
+}
+
+.produto__item span {
+  font-family: var(--segunda-fonte);
+  font-size: 1.2em;
+  font-weight: bold;
+  color: var(--cor-primaria);
+  line-height: 1.2;
+  padding-top: 3.5%;
+}
+
+.produto__item.dummy-item {
+  background-color: transparent;
+  box-shadow: none;
+  padding: 0;
+}
+
+.produto__item.dummy-item img,
+.produto__item.dummy-item span {
+  display: none;
+}
+
+.arrow-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  color: var(--cor-primaria);
+  cursor: pointer;
+  display: none; /* Hidden by default */
+}
+
+.produtos__container:last-of-type {
+  margin-bottom: 0;
+}
+
+/* Sobre */
+.sobre {
+  background-color: var(--cor-primaria);
+  color: var(--cor-secundaria);
+}
+
+.sobre__conteudo-principal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 3% 5%;
+  gap: 5%;
+}
+
+.sobre__imagem img {
+  width: 100%;
+  border-radius: 50%;
+  border: 5px solid var(--cor-secundaria);
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+  display: block; /* Ensures the image is a block element */
+  animation: slideDown 0.5s ease-in-out; /* Animation for image */
+}
+
+.sobre__titulo h2 {
+  font-family: var(--primeira-fonte);
+  font-size: 2.8em;
+  font-weight: 800;
+  color: var(--cor-secundaria);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sobre__texto p {
+  font-family: var(--segunda-fonte);
+  font-size: 1.1em;
+  line-height: 1.6;
+  text-align: center;
+  padding: 1% 5%;
+}
+
+.sobre__texto p:last-of-type {
+  border-bottom: 3px solid var(--cor-secundaria);
+  padding-bottom: 3%;
+}
+
+/* Contato */
+.contato {
+  background-color: var(--cor-primaria);
+}
+
+.contato__conteudo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 3%;
+  gap: 3%;
+}
+
+.contato__titulo h2 {
+  font-family: var(--primeira-fonte);
+  font-size: 4em;
+  font-weight: 800;
+  color: var(--cor-secundaria);
+}
+
+.contato__telefones {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 6%;
+}
+
+.contato__telefone-item {
+  text-align: center;
+  color: var(--cor-secundaria);
+  border: #d9d9d9 4px solid;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.contato__telefone-item .numero-telefone-link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.contato__telefone-item .numero-telefone-link:hover {
+  color: rgb(49, 49, 238);
+}
+
+.contato__telefone-item .numero-telefone {
+  font-family: var(--segunda-fonte);
+  font-size: 2.5em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.contato__telefone-item .nome-contato {
+  font-family: var(--segunda-fonte);
+  font-size: 1.8em;
+  font-weight: normal;
+}
+
+/* Footer */
+.footer {
+  width: 100%;
+  background-color: var(--cor-secundaria);
+  color: var(--cor-primaria);
+  text-align: center;
+  padding: 1%;
+  font-family: var(--primeira-fonte);
+  font-size: 0.9em;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === ANIMAÇÃO SUAVE === */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
